@@ -26,6 +26,8 @@ Run:
     streamlit run app.py
 """
 
+import os
+
 import numpy as np
 import pandas as pd
 import networkx as nx
@@ -34,7 +36,11 @@ import streamlit as st
 
 st.set_page_config(page_title="PeMS04 Traffic Dashboard", page_icon="🚦", layout="wide")
 
-DATA_DIR = "data"
+# Use a path relative to this file, not the process's working directory —
+# Streamlit Community Cloud runs the app from the repo root, not from this
+# script's own folder, so a bare "data" would only work when run locally
+# from inside HW1/.
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 N_SENSORS = 307
 
 
